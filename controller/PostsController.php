@@ -16,5 +16,21 @@ class PostsController
         require 'view/listPostsView.php';
 
     }
+    public function displayPost($idPost)
+    {
+
+        if ($_GET['idPost'] && $_GET['idPost'] > 0) {
+
+            $postsManager = new PostsManager();
+            $post = $postsManager->getPost($idPost);
+
+            require 'view/postView.php';
+
+        } else {
+
+            header('Location: index.php');
+        }
+
+    }
 
 }
