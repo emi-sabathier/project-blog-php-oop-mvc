@@ -16,7 +16,15 @@ class PostsManager extends Manager
         return $posts;
     }
 
-   
+    public function getPost($idPost) {
+
+        $db = $this->dbConnect();
+        $q = $db->prepare('SELECT id, title, author, content, DATE_FORMAT(creation_date, \'%d/%m/%Y %H:%i:%s\') AS date_fr FROM posts WHERE id = ?');
+        $q->execute(array($idPost));
+        $post = $q->fetch(); 
+
+        return $post;
+    }
 }
 
 
