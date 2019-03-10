@@ -16,7 +16,7 @@ foreach ($posts as $post) {?>
         le
         <?=htmlspecialchars($post['date_fr'])?>
     </p>
-    <p><a href="index.php?action=post&idPost=<?=$post['id']?>">Voir la recette</a></p>
+    <p><a href="index.php?action=post&idPost=<?=$post['id']?>">Voir l'article</a></p>
     <?php
 }
 ?>
