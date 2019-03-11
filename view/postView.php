@@ -16,7 +16,7 @@
     <p><a href="index.php">Retour</a></p>
 </div>
 
-<form action="index.php?action=addComment&amp;idPost=<?= $post['id'] ?>" method="post">
+<form action="index.php?action=addComment&amp;postId=<?= $post['id'] ?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />

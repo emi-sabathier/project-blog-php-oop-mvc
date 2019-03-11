@@ -15,13 +15,13 @@ class PostsController
         require 'view/listPostsView.php';
 
     }
-    public function displayPost($idPost)
+    public function displayPost($postId)
     {
 
-        if ($_GET['idPost'] && $_GET['idPost'] > 0) {
+        if ($_GET['postId'] && $_GET['postId'] > 0) {
 
             $postsManager = new PostsManager();
-            $post = $postsManager->getPost($idPost);
+            $post = $postsManager->getPost($postId);
 
             require 'view/postView.php';
 

@@ -10,14 +10,14 @@ class CommentsController
 
     public function postComment($postId, $author, $comment)
     {
-        if (isset($_GET['idPost']) && $_GET['idPost'] > 0){
+        if (isset($_GET['postId']) && $_GET['postId'] > 0){
 
             if (!empty($_POST['author']) && !empty($_POST['comment'])) {
 
                 $commentsManager = new CommentsManager();
                 $comments = $commentsManager->addComment($postId, $author, $comment);   
 
-                header('Location: index.php?action=post&idPost=' . $postId);
+                header('Location: index.php?action=displayPost&postId=' . $postId);
                 exit;
 
             } else {

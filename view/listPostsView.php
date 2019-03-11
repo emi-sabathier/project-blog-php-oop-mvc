@@ -14,7 +14,7 @@
             le
             <?=htmlspecialchars($post['post_date_fr'])?>
         </p>
-        <p><a href="index.php?action=post&idPost=<?=$post['id']?>">Voir l'article</a></p>
+        <p><a href="index.php?action=displayPost&postId=<?=$post['id']?>">Voir l'article</a></p>
     <?php endforeach ?>
 </div>
 
