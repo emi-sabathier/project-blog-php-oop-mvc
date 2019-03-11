@@ -1,6 +1,5 @@
 <?php
 namespace Blog\controller;
-
 use Blog\model\PostsManager;
 
 require_once 'model/PostsManager.php';
@@ -29,8 +28,7 @@ class PostsController
         } else {
 
             header('Location: index.php');
+            exit;
         }
-
     }
-
 }

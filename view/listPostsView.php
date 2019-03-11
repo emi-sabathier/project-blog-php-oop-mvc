@@ -10,9 +10,9 @@
         <p>
             <strong><?=htmlspecialchars($post['title'])?></strong>
             écrit par
-            <?=htmlspecialchars($post['author'])?>
+            <?=htmlspecialchars($post['username'])?>
             le
-            <?=htmlspecialchars($post['date_fr'])?>
+            <?=htmlspecialchars($post['post_date_fr'])?>
         </p>
         <p><a href="index.php?action=post&idPost=<?=$post['id']?>">Voir l'article</a></p>
     <?php endforeach ?>
