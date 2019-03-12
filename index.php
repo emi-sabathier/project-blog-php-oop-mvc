@@ -1,7 +1,7 @@
 <?php
 
-use Blog\controller\PostsController;
 use Blog\controller\CommentsController;
+use Blog\controller\PostsController;
 
 require 'controller/PostsController.php';
 require 'controller/CommentsController.php';
@@ -14,10 +14,13 @@ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'listPosts') {
         $postsController->listPosts();
     } elseif ($_GET['action'] == 'displayPost') {
+        
         $postsController->displayPost($_GET['postId']);
+
     } elseif ($_GET['action'] == "addComment") {
         $commentsController->postComment($_GET['postId'], $_POST['author'], $_POST['comment']);
-    } else {
+    } 
+    else {
         header('Location: index.php');
         exit;
     }

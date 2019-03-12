@@ -1,10 +1,10 @@
 <?php $title = 'Liste des derniers billets';?>
 
 <?php ob_start();?>
-<h1>Bienvenue !</h1>
+<h1 class="title is-1">Bienvenue !</h1>
 
-<div class="content">
-    <h3>Liste des billets</h3>
+<div>
+    <h3 class="title is-3">Liste des billets</h3>
 
     <?php foreach ($posts as $post) :?>
         <p>
@@ -15,7 +15,7 @@
             <?=htmlspecialchars($post['post_date_fr'])?>
         </p>
         <p><a href="index.php?action=displayPost&postId=<?=$post['id']?>">Voir l'article</a></p>
-    <?php endforeach ?>
+    <?php endforeach; ?>
 </div>
 
 

@@ -1,8 +1,10 @@
 <?php
 namespace Blog\controller;
-use Blog\model\PostsManager;
+use Blog\model\PostsManager; 
+use Blog\model\CommentsManager; 
 
 require_once 'model/PostsManager.php';
+require_once 'model/CommentsManager.php';
 
 class PostsController
 {
@@ -21,7 +23,9 @@ class PostsController
         if ($_GET['postId'] && $_GET['postId'] > 0) {
 
             $postsManager = new PostsManager();
+            $commentsManager = new CommentsManager();
             $post = $postsManager->getPost($postId);
+            $postComments = $commentsManager->getListComments($postId);
 
             require 'view/postView.php';
 
