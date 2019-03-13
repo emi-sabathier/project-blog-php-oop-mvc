@@ -25,7 +25,9 @@ if (isset($_GET['action'])) {
 
     } elseif ($_GET['action'] == "login") {
         $usersController->displayLogin();
-    } 
+    } elseif ($_GET['action'] == "disconnect") {
+        $usersController->disconnect();
+    }
     else {
         header('Location: index.php');
         exit;

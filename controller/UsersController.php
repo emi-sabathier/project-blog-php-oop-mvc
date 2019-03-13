@@ -3,6 +3,8 @@
 namespace Blog\controller;
 use Blog\model\UsersManager; 
 
+session_start();
+
 require_once 'model/UsersManager.php';
 
 class UsersController {
@@ -21,10 +23,10 @@ class UsersController {
 
             } elseif (($_POST['userlogin'] == $userInfos['user_login']) && ($_POST['password'] == $userInfos['user_password'])) {
 
-                session_start();
+                
                 $_SESSION['id'] = $userInfos['id'];
                 $_SESSION['login'] = $userInfos['user_name'];
-                
+
                 header('Location: view/adminView.php');
                 exit;               
             
@@ -33,5 +35,19 @@ class UsersController {
             exit;
             }
         }
+    }
+
+    public function keepSession() {
+
+        if (isset($_SESSION['id']) && isset($_SESSION['login'])) {
+            header('Location: view/adminView.php');
+        exit; 
+        }
+    }
+
+    public function disconnect() {
+        $_SESSION = array();
+        session_destroy();
+        header('Location: index.php');
     }
 }
