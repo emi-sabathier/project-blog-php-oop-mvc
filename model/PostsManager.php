@@ -25,6 +25,16 @@ class PostsManager extends Manager
 
         return $post;
     }
+
+    public function deletePostAdmin($postId) {
+
+        $db = $this->dbConnect();
+        $q = $db->prepare('DELETE FROM posts WHERE id = ?');
+        $q->execute(array($postId));
+        $deletedPost = $q->fetch(); 
+
+        return $deletedPost;
+    }
 }
 
 

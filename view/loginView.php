@@ -1,6 +1,6 @@
-<?php $title = 'Panneau d\'administration' ?>
+<?php $title = 'Login' ?>
 
-<?php ob_start();?>
+<?php ob_start(); ?>
 
 <form action="index.php?action=login" method="post">
     <div>

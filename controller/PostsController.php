@@ -10,13 +10,12 @@ class PostsController
 {
     public function listPosts()
     {
-
         $postsManager = new PostsManager();
         $posts = $postsManager->getListPosts();
 
         require 'view/listPostsView.php';
-
     }
+    
     public function displayPost($postId)
     {
 
@@ -35,7 +34,21 @@ class PostsController
             exit;
         }
     }
-    public function listPostsAdmin() {
 
+    public function deletePost($postId){
+
+        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+
+        $postsManager = new PostsManager();
+        $deletedPost = $postsManager->deletePostAdmin($postId);
+
+        header('Location:index?action=adminPanel');
+        exit;
+
+        } else {
+            header('Location: index.php');
+            exit;
+        }
     }
+
 }

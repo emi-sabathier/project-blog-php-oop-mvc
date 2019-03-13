@@ -24,7 +24,14 @@ if (isset($_GET['action'])) {
         $commentsController->postComment($_GET['postId'], $_POST['author'], $_POST['comment']);
 
     } elseif ($_GET['action'] == "login") {
-        $usersController->displayLogin();
+        $usersController->login();       
+
+    } elseif ($_GET['action'] == "adminPanel") {
+        $usersController->adminPanel();
+
+    } elseif ($_GET['action'] == "deletePost") {
+        $postsController->deletePost($_GET['postId']);
+
     } elseif ($_GET['action'] == "disconnect") {
         $usersController->disconnect();
     }
