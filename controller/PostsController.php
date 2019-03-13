@@ -20,7 +20,7 @@ class PostsController
     public function displayPost($postId)
     {
 
-        if ($_GET['postId'] && $_GET['postId'] > 0) {
+        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
 
             $postsManager = new PostsManager();
             $commentsManager = new CommentsManager();
@@ -34,5 +34,8 @@ class PostsController
             header('Location: index.php');
             exit;
         }
+    }
+    public function listPostsAdmin() {
+
     }
 }

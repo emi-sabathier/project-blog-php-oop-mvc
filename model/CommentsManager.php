@@ -16,7 +16,7 @@ class CommentsManager extends Manager {
     }
     public function getListComments($postId) {
         $db = $this->dbconnect();
-        $q = $db->prepare('SELECT id, author, content, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
+        $q = $db->prepare('SELECT id, author, content, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
         $q->execute(array($postId));
         $comments = $q->fetchAll();
 

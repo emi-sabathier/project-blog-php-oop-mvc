@@ -1,18 +1,25 @@
 <?php $title = 'Liste des derniers billets';?>
 
 <?php ob_start();?>
-<h1 class="title is-1">Bienvenue !</h1>
+<nav class="navbar bg-dark">
+    <a href="index.php?action=login">Administration</a>
+</nav>
+
+<h1>Bienvenue !</h1>
 
 <div>
-    <h3 class="title is-3">Liste des billets</h3>
+    <h3>Liste des billets</h3>
 
     <?php foreach ($posts as $post) :?>
         <p>
-            <strong><?=htmlspecialchars($post['title'])?></strong>
+            <strong><?= htmlspecialchars($post['title']) ?></strong>
             écrit par
-            <?=htmlspecialchars($post['username'])?>
+            <strong><?= htmlspecialchars($post['user_name'])?></strong>
             le
-            <?=htmlspecialchars($post['post_date_fr'])?>
+            <?= htmlspecialchars($post['post_date_fr'])?>
+        </p>
+        <p>
+            <?= substr($post['content'], 0, 100) ?> ...
         </p>
         <p><a href="index.php?action=displayPost&postId=<?=$post['id']?>">Voir l'article</a></p>
     <?php endforeach; ?>
