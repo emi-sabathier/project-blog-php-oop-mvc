@@ -13,20 +13,20 @@
     <p>
         <?= htmlspecialchars($post['content']) ?>
     </p>
-    <p><a href="index.php">Retour</a></p>
+    <p><a href="index.php" class="btn btn-secondary">Retour</a></p>
 </div>
 
 <form action="index.php?action=addComment&amp;postId=<?=$post['id']?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
+        <input type="text" id="author" name="author" required />
     </div>
     <div>
         <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment" rows="10"></textarea>
+        <textarea id="comment" name="comment" cols ="50"rows="5" required></textarea>
     </div>
     <div>
-        <input type="submit" value="Envoyer" />
+        <input type="submit" value="Envoyer" class="btn btn-primary" />
     </div>
 </form>
 

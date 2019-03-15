@@ -16,15 +16,15 @@ class PostsController
         require 'view/listPostsView.php';
     }
     
-    public function displayPost($postId)
+    public function displayPost()
     {
 
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
 
             $postsManager = new PostsManager();
             $commentsManager = new CommentsManager();
-            $post = $postsManager->getPost($postId);
-            $postComments = $commentsManager->getListComments($postId);
+            $post = $postsManager->getPost($_GET['postId']);
+            $postComments = $commentsManager->getListComments($_GET['postId']);
 
             require 'view/postView.php';
 
@@ -35,12 +35,12 @@ class PostsController
         }
     }
 
-    public function deletePost($postId){
+    public function deletePost(){
 
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
 
         $postsManager = new PostsManager();
-        $deletedPost = $postsManager->deletePostAdmin($postId);
+        $deletedPost = $postsManager->deletePostAdmin($_GET['postId']);
 
         header('Location:index?action=adminPanel');
         exit;

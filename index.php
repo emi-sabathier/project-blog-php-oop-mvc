@@ -18,10 +18,10 @@ if (isset($_GET['action'])) {
         $postsController->listPosts();
 
     } elseif ($_GET['action'] == 'displayPost') {        
-        $postsController->displayPost($_GET['postId']);
+        $postsController->displayPost();
 
     } elseif ($_GET['action'] == "addComment") {
-        $commentsController->postComment($_GET['postId'], $_POST['author'], $_POST['comment']);
+        $commentsController->postComment();
 
     } elseif ($_GET['action'] == "login") {
         $usersController->login();       
@@ -30,7 +30,7 @@ if (isset($_GET['action'])) {
         $usersController->adminPanel();
 
     } elseif ($_GET['action'] == "deletePost") {
-        $postsController->deletePost($_GET['postId']);
+        $postsController->deletePost();
 
     } elseif ($_GET['action'] == "disconnect") {
         $usersController->disconnect();
