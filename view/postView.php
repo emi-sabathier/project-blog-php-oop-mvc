@@ -1,21 +1,24 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php $title = htmlspecialchars($post['title']);?>
 
 <?php ob_start();?>
 
 <div>
     <h3>
         <strong>
-            <?= htmlspecialchars($post['title']) ?></strong>
+            <?=htmlspecialchars($post['title'])?></strong>
     </h3>
     <p>Par
-        <strong><?= htmlspecialchars($post['user_name']) ?></strong> posté le <?= htmlspecialchars($post['post_date_fr']) ?>
+        <strong>
+            <?=htmlspecialchars($post['user_name'])?></strong> posté le
+        <?=htmlspecialchars($post['post_date_fr'])?>
     </p>
     <p>
-        <?= htmlspecialchars($post['content']) ?>
+        <?=htmlspecialchars($post['content'])?>
     </p>
     <p><a href="index.php" class="btn btn-secondary">Retour</a></p>
 </div>
 
+<?php if (isset($_SESSION['role'])): ?>
 <form action="index.php?action=addComment&amp;postId=<?=$post['id']?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
@@ -23,25 +26,26 @@
     </div>
     <div>
         <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment" cols ="50"rows="5" required></textarea>
+        <textarea id="comment" name="comment" cols="50" rows="5" required></textarea>
     </div>
     <div>
         <input type="submit" value="Envoyer" class="btn btn-primary" />
     </div>
 </form>
 
-<?php foreach($postComments as $comment) :?>
+<?php foreach ($postComments as $comment): ?>
 <p>
     <strong>
-        <?= htmlspecialchars($comment['author']); ?></strong>
+        <?=htmlspecialchars($comment['author']);?></strong>
     Le
-    <?= htmlspecialchars($comment['comment_date_fr']); ?>
+    <?=htmlspecialchars($comment['comment_date_fr']);?>
 </p>
 <p>
-    <?= htmlspecialchars($comment['content']); ?>
+    <?=htmlspecialchars($comment['content']);?>
 </p>
-<?php endforeach; ?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require 'template.php'; ?>
+<?php endforeach;?>
+<?php else: ?>
+<p>Vous devez être connecté pour pouvoir poster un commentaire</p>
+<?php endif;?>
+<?php $content = ob_get_clean();?>
+<?php require 'template.php';?>
