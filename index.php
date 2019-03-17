@@ -14,32 +14,34 @@ if (isset($_GET['action'])) {
     $commentsController = new CommentsController();
     $usersController = new UsersController();
 
-    if ($_GET['action'] == 'listPosts') {
-        $postsController->listPosts();
+    switch ($_GET['action']) {
+        case 'listPosts':
+            $postsController->listPosts();
+            break;
+        case 'displayPost':
+            $postsController->displayPost();
+            break;
+        case 'postComment':
+            $commentsController->postComment();
+            break;
+        case 'login':
+            $usersController->login();
+            break;
+        case 'disconnect':
+            $usersController->disconnect();
+            break;
+        case 'dashboard':
+            $usersController->dashboard();
+            break;
+        case 'deletePost':
+            $postsController->deletePostAdmin();
+            break;
 
-    } elseif ($_GET['action'] == 'displayPost') {        
-        $postsController->displayPost();
-
-    } elseif ($_GET['action'] == "addComment") {
-        $commentsController->postComment();
-
-    } elseif ($_GET['action'] == "login") {
-        $usersController->login();       
-
-    } elseif ($_GET['action'] == "adminPanel") {
-        $usersController->adminPanel();
-
-    } elseif ($_GET['action'] == "deletePost") {
-        $postsController->deletePost();
-
-    } elseif ($_GET['action'] == "disconnect") {
-        $usersController->disconnect();
-    }
-    else {
-        header('Location: index.php');
-        exit;
+        default:
+            header('Location: index.php');
+            exit;
     }
 } else {
-    $postsController = new PostsController();   
+    $postsController = new PostsController();
     $postsController->listPosts();
 }
