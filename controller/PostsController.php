@@ -18,7 +18,6 @@ class PostsController
     
     public function displayPost()
     {
-
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
 
             $postsManager = new PostsManager();
@@ -29,26 +28,49 @@ class PostsController
             require 'view/postView.php';
 
         } else {
-
             header('Location: index.php');
             exit;
         }
-    }
+    }    
+    public function displayPostAdmin()
+    {
+        if (isset($_GET['postId']) && $_GET['postId'] > 0) {       
+            $postsManager = new PostsManager();     
+            $post = $postsManager->getPost($_GET['postId']);
 
-    public function deletePost(){
-
-        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
-
-        $postsManager = new PostsManager();
-        $deletedPost = $postsManager->deletePostAdmin($_GET['postId']);
-
-        header('Location:index?action=adminPanel');
-        exit;
-
+            require 'view/adminPostView.php';
+            
         } else {
             header('Location: index.php');
             exit;
         }
     }
-
+    public function tinyMcePost() {        
+        require 'view/createPostView.php';        
+    }
+    public function createPostAdmin(){        
+        if(!empty($_POST['title']) && !empty($_POST['content'])) {
+            $postsManager = new PostsManager();
+            $postCreated = $postsManager->createPostAdmin($_POST['title'], $_POST['content']);
+            
+            header('Location: index.php?action=addPost');
+            exit;
+        } else {
+            header('Location: index.php?action=addPost');
+            exit;
+        }
+    }
+    public function deletePostAdmin()
+    {
+        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+        $postsManager = new PostsManager();
+        $deletePost = $postsManager->deletePostAdmin($_GET['postId']);
+        $deleteComments = $postsManager->deleteCommentsAdmin($_GET['postId']);
+        header('Location:index?action=adminPanel');
+        exit;
+        } else {
+            header('Location: index.php');
+            exit;
+        }
+    }
 }

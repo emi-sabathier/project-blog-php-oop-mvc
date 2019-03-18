@@ -30,13 +30,21 @@ if (isset($_GET['action'])) {
         case 'disconnect':
             $usersController->disconnect();
             break;
-        case 'dashboard':
-            $usersController->dashboard();
+        case 'adminPanel':
+            $usersController->adminPanel();
             break;
         case 'deletePost':
             $postsController->deletePostAdmin();
             break;
-
+        case 'viewPost':
+            $postsController->displayPostAdmin();
+            break;
+        case 'addPost':
+            $postsController->tinyMcePost();
+            break;
+        case 'createPost':
+            $postsController->createPostAdmin();
+            break;
         default:
             header('Location: index.php');
             exit;

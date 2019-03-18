@@ -57,12 +57,11 @@ class UsersController
         }
     }
     public function adminPanel()
-    {
+    {        
         $postsManager = new PostsManager();
         $posts = $postsManager->getListPosts();
-        require 'view/adminView.php';
+        require 'view/adminView.php';       
     }
-
     public function disconnect()
     {
         session_destroy();
