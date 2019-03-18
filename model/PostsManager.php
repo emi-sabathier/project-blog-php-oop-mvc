@@ -31,18 +31,12 @@ class PostsManager extends Manager
         $db = $this->dbConnect();
         $q = $db->prepare('DELETE FROM posts WHERE id = ?');
         $q->execute(array($postId));
-        $deletePost = $q->fetch(); 
-
-        return $deletePost;
     }
     public function deleteCommentsAdmin($postId) {
 
         $db = $this->dbConnect();     
         $q = $db->prepare('DELETE FROM comments WHERE post_id = ?');
         $q->execute(array($postId));
-        $deleteComments = $q->fetch(); 
-
-        return $deleteComments;
     }
 
     public function createPostAdmin($title, $content) {
@@ -50,18 +44,15 @@ class PostsManager extends Manager
         $db = $this->dbConnect();
         $q = $db->prepare('INSERT INTO posts(title, content, author_id, post_date) VALUES(?, ?, 1, NOW())');
         $q->execute(array($title, $content));
-        $createdPost = $q->fetch();
-
-        return $createdPost;
     }
 
-    public function updatePostAdmin($postId){
+    public function updatePostAdmin($title, $content, $postId){
         $db = $this->dbConnect();
-        $q = $db->prepare();
-        $q->execute(array());
-        $updatedPost = $q->fetch();
+        $q = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
+        $q->execute(array($title, $content, $postId));
 
-        return $updatePost;
+        $jambon = $q->fetch();
+        return $jambon;
     }
 }
 

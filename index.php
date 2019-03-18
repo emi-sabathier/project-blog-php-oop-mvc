@@ -45,6 +45,9 @@ if (isset($_GET['action'])) {
         case 'createPost':
             $postsController->createPostAdmin();
             break;
+        case 'updatePost':
+            $postsController->updatePostAdmin();
+            break;
         default:
             header('Location: index.php');
             exit;
