@@ -5,7 +5,7 @@
 <h1>Panneau d'administration</h1>
 <h3>Modifier le post</h3>
 <div>
-    <form action="index.php?action=updatePost" method="post">
+    <form action="index.php?action=updatePost&postId=<?= $post['id'] ?>" method="post">
         <label for="title">Titre du post :</label><br />
         <input type="text" id="title" name="title" value="<?= $post['title'] ?>"><br />
         <label for="content">Votre texte : </label><br />

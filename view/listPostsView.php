@@ -27,7 +27,7 @@
             <?=htmlspecialchars($post['post_date_fr'])?>
         </p>
         <p>
-            <?=substr($post['content'], 0, 100)?> ...
+            <?= htmlspecialchars(substr($post['content'], 0, 100))?> ...
         </p>
         <p><a href="index.php?action=displayPost&postId=<?=$post['id']?>" class="btn btn-primary">Voir l'article</a></p>
     <?php endforeach;?>

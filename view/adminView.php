@@ -22,7 +22,7 @@
     le
     <?=htmlspecialchars($post['post_date_fr'])?>
     <a href="index.php?action=viewPost&postId=<?=$post['id']?>" class="btn btn-primary">Voir</a>
-    <a href="index.php?action=updatePost&postId=<?=$post['id']?>" class="btn btn-secondary">Modifier</a>
+    <a href="index.php?action=editPost&postId=<?=$post['id']?>" class="btn btn-secondary">Modifier</a>
     <a href="index.php?action=deletePost&postId=<?=$post['id']?>" class="btn btn-danger">Effacer</a>
 </p>
 <?php endforeach;?>

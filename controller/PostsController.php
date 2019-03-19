@@ -63,10 +63,9 @@ class PostsController
             exit;
         }
     }
-    public function updatePostAdmin(){
+    public function editPost(){
         
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
-
             $postsManager = new PostsManager();
             $post = $postsManager->getPost($_GET['postId']);
             require 'view/updatePostView.php';
@@ -74,6 +73,21 @@ class PostsController
         } else {
             header('Location: index.php');
             exit;
+        }
+    }
+    public function updatePostAdmin(){
+        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+            if(!empty($_POST['title']) && !empty($_POST['content'])) {   
+                $postsManager = new PostsManager();             
+                $updatedPost = $postsManager->updatePostAdmin($_POST['title'], $_POST['content'], $_GET['postId']);
+                header('Location: index.php?action=editPost&postId=' . $_GET['postId']);
+                exit;
+            } else {
+                header('Location: ');
+                exit;
+            }
+        } else {
+            echo "jambon, pas bon le postId";
         }
     }
     public function deletePostAdmin()

@@ -14,7 +14,7 @@
     <script>
         tinymce.init({
             selector: '#postArea',
-            height: 300
+            height: 300,
         });
     </script>
 </head>
