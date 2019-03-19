@@ -5,15 +5,15 @@
 <div>
     <h3>
         <strong>
-            <?=htmlspecialchars($post['title'])?></strong>
+            <?=$post['title']?></strong>
     </h3>
     <p>Par
         <strong>
-            <?=htmlspecialchars($post['user_name'])?></strong> posté le
-        <?=htmlspecialchars($post['post_date_fr'])?>
+            <?=$post['user_name']?></strong> posté le
+        <?=$post['post_date_fr']?>
     </p>
     <p>
-        <?=htmlspecialchars($post['content'])?>
+        <?=$post['content']?>
     </p>
     <p><a href="index.php" class="btn btn-secondary">Retour</a></p>
 </div>
@@ -50,7 +50,7 @@
 <?php foreach ($postComments as $comment): ?>
     <p>
         <strong>
-            <?=htmlspecialchars($comment['author']);?></strong>
+            <?= htmlspecialchars($comment['author']);?></strong>
         Le
         <?=htmlspecialchars($comment['comment_date_fr']);?>
     </p>

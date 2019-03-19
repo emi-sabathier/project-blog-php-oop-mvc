@@ -15,12 +15,12 @@
 <?php foreach ($posts as $post): ?>
 <p>
     <strong>
-        <?=htmlspecialchars($post['title'])?></strong>
+        <?=$post['title']?></strong>
     écrit par
     <strong>
-        <?=htmlspecialchars($post['user_name'])?></strong>
+        <?=$post['user_name']?></strong>
     le
-    <?=htmlspecialchars($post['post_date_fr'])?>
+    <?=$post['post_date_fr']?>
     <a href="index.php?action=viewPost&postId=<?=$post['id']?>" class="btn btn-primary">Voir</a>
     <a href="index.php?action=editPost&postId=<?=$post['id']?>" class="btn btn-secondary">Modifier</a>
     <a href="index.php?action=deletePost&postId=<?=$post['id']?>" class="btn btn-danger">Effacer</a>

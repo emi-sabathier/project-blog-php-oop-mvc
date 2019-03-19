@@ -7,12 +7,12 @@ ob_start();
 <div>
     <h3>
         <strong>
-            <?= htmlspecialchars($post['title']) ?></strong>
+            <?= $post['title'] ?></strong>
     </h3>
     <p>Par
         <strong>
-            <?= htmlspecialchars($post['user_name']) ?></strong> posté le
-        <?= htmlspecialchars($post['post_date_fr']) ?>
+            <?= $post['user_name'] ?></strong> posté le
+        <?= $post['post_date_fr'] ?>
     </p>
     <p>
         <?= $post['content'] ?>
