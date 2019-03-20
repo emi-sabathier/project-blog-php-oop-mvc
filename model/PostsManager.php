@@ -58,12 +58,6 @@ class PostsManager extends Manager
         $q = $db->prepare('DELETE FROM posts WHERE id = ?');
         $q->execute(array($postId));
     }
-    public function deleteCommentsAdmin($postId) {
-
-        $db = $this->dbConnect();     
-        $q = $db->prepare('DELETE FROM comments WHERE post_id = ?');
-        $q->execute(array($postId));
-    }
 
     public function createPostAdmin($title, $content) {
 

@@ -28,9 +28,22 @@ class CommentsController
             exit;
         }
     }
-    public function listCommentsAdmin(){
+    public function listCommentsAdmin()
+    {
+        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+            $commentsManager = new CommentsManager();
+            $comments = $commentsManager->getListComments($_GET['postId']);
+            require 'view/adminListCommentsView.php';
+        } else {
+            header('Location: index.php?action=adminPanel');
+            exit;
+        }
+    }
+    public function deleteCommentAdmin()
+    {
         $commentsManager = new CommentsManager();
-        $comments = $commentsManager->getListComments($_GET['postId']);
-        require 'view/adminListCommentsView.php';
+        $deleteComment = $commentsManager->deleteComment($_GET['commentId']);
+        header('Location: index.php?action=adminPanel');
+        exit;
     }
 }

@@ -46,7 +46,7 @@ class PostsController
             exit;
         }
     }
-    public function tinyMcePost()
+    public function addPost()
     {
         require 'view/createPostView.php';
     }
@@ -94,8 +94,9 @@ class PostsController
     {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
             $postsManager = new PostsManager();
+            $commentsManager = new CommentsManager();
             $deletePost = $postsManager->deletePostAdmin($_GET['postId']);
-            $deleteComments = $postsManager->deleteCommentsAdmin($_GET['postId']);
+            $deleteComments = $commentsManager->deleteCommentsAdmin($_GET['postId']);
             header('Location:index?action=adminPanel');
             exit;
         } else {

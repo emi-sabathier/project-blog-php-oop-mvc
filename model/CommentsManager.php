@@ -22,5 +22,14 @@ class CommentsManager extends Manager {
 
         return $comments;
     }
-
+    public function deleteCommentsAdmin($postId) {
+        $db = $this->dbConnect();     
+        $q = $db->prepare('DELETE FROM comments WHERE post_id = ?');
+        $q->execute(array($postId));
+    }
+    public function deleteCommentAdmin($commentId){
+        $db = $this->dbConnect();
+        $q = $db->prepare('DELETE FROM comments WHERE id = ?');
+        $q->execute(array($commentId));
+    }
 }

@@ -43,7 +43,7 @@ if (isset($_GET['action'])) {
             $postsController->displayPostAdmin();
             break;
         case 'addPost':
-            $postsController->tinyMcePost();
+            $postsController->addPost();
             break;
         case 'createPost':
             $postsController->createPostAdmin();
@@ -53,6 +53,9 @@ if (isset($_GET['action'])) {
             break;
         case 'updatePost':
             $postsController->updatePostAdmin();
+            break;
+        case 'deleteComment':
+            $commentsController->deleteCommentAdmin();
             break;
         default:
             header('Location: index.php');
