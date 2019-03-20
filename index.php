@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
             $commentsController->postComment();
             break;
         case 'listComments':
-            $commentsController->listComments();
+            $commentsController->listCommentsAdmin();
             break;
         case 'login':
             $usersController->login();
