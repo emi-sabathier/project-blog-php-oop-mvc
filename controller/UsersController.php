@@ -5,10 +5,12 @@ namespace Blog\controller;
 session_start();
 use Blog\model\PostsManager;
 use Blog\model\UsersManager;
+use Blog\model\CommentsManager;
 
 
 require_once 'model/UsersManager.php';
 require_once 'model/PostsManager.php';
+require_once 'model/CommentsManager.php';
 
 class UsersController
 {
@@ -59,7 +61,8 @@ class UsersController
     public function adminPanel()
     {        
         $postsManager = new PostsManager();
-        $posts = $postsManager->getListPosts();
+        $posts = $postsManager->getListPostsAdmin();
+
         require 'view/adminView.php';       
     }
     public function disconnect()

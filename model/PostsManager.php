@@ -10,7 +10,12 @@ class PostsManager extends Manager
     public function getListPosts() {
 
         $db = $this->dbconnect(); 
-        $q = $db->query('SELECT posts.id, posts.title, posts.author_id, posts.content, users.user_name, DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr FROM posts INNER JOIN users ON posts.author_id = users.id ORDER BY post_date DESC');
+        $q = $db->query
+        ('SELECT posts.id, posts.title, posts.author_id, posts.content, users.user_name,
+        DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr
+        FROM posts
+        INNER JOIN users ON posts.author_id = users.id 
+        ORDER BY post_date DESC');
         $posts = $q->fetchAll();
         
         return $posts;
@@ -19,11 +24,32 @@ class PostsManager extends Manager
     public function getPost($postId) {
 
         $db = $this->dbConnect();
-        $q = $db->prepare('SELECT posts.id, posts.title, posts.author_id, users.user_name, posts.content, DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr FROM posts INNER JOIN users ON posts.author_id = users.id WHERE posts.id = ?');
+        $q = $db->prepare
+        ('SELECT posts.id, posts.title, posts.author_id, users.user_name, posts.content,
+        DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr
+        FROM posts 
+        INNER JOIN users ON posts.author_id = users.id WHERE posts.id = ?');
         $q->execute(array($postId));
         $post = $q->fetch(); 
-
         return $post;
+    }
+
+    public function getListPostsAdmin() {
+
+        $db = $this->dbconnect(); 
+        $q = $db->query
+        ('SELECT posts.id, posts.title, posts.author_id, posts.content, users.user_name,
+        DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr,
+        COUNT(comments.id) AS nb_comments
+        FROM posts
+        INNER JOIN users ON posts.author_id = users.id 
+        LEFT JOIN comments
+        ON posts.id = comments.post_id
+        GROUP BY posts.id
+        ORDER BY post_date DESC');
+        $posts = $q->fetchAll();
+        
+        return $posts;
     }
 
     public function deletePostAdmin($postId) {
@@ -51,8 +77,8 @@ class PostsManager extends Manager
         $q = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
         $q->execute(array($title, $content, $postId));
 
-        $jambon = $q->fetch();
-        return $jambon;
+        $updateComment = $q->fetch();
+        return $updateComment;
     }
 }
 
