@@ -8,7 +8,8 @@
 <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] == '0'): ?>
     <a href="index.php?action=disconnect">Déconnexion</a>
 <?php elseif(!isset($_SESSION['role'])): ?>
-    <a href="index.php?action=login">Identifiez-vous</a>
+    <a href="index.php?action=signup">Inscription</a>
+    <a href="index.php?action=signin">Identification</a>
 <?php endif;?>
 
 </nav>

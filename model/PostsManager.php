@@ -40,7 +40,7 @@ class PostsManager extends Manager
     public function createPostAdmin($title, $content) {
 
         $db = $this->dbConnect();
-        $q = $db->prepare('INSERT INTO posts(title, content, author_id, post_date) VALUES(?, ?, 1, NOW())');
+        $q = $db->prepare('INSERT INTO posts(title, content, post_date) VALUES(?, ?, 1, NOW())');
         $q->execute(array($title, $content));
     }
 

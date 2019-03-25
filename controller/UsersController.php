@@ -3,45 +3,45 @@ namespace Blog\controller;
 
 use Blog\model\PostsManager;
 use Blog\model\UsersManager;
-use Blog\model\CommentsManager;
 
 require_once 'model/UsersManager.php';
 require_once 'model/PostsManager.php';
 require_once 'model/CommentsManager.php';
 class UsersController
 {
-    public function login()
+    public function signIn()
     {
         // Check if member or admin sessions exists
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] == '1') {
                 header('Location: index.php?action=adminPanel');
                 exit;
-                
+
             } elseif ($_SESSION['role'] == '0') {
                 header('Location: index.php?action=listPosts');
                 exit;
             }
         } else {
-            require 'view/loginView.php';
-            if (isset($_POST['userlogin'], $_POST['password'])) {
+            require 'view/signinView.php';
+            if (isset($_POST['signinLogin'], $_POST['signinPassword'])) {
                 $usersManager = new UsersManager();
-                $userInfos = $usersManager->getUser($_POST['userlogin']);
-                if (($_POST['userlogin'] !== $userInfos['user_login']) || ($_POST['password'] !== $userInfos['user_password'])) {
+                $userInfos = $usersManager->getUser($_POST['signinLogin']);
+                $hashCheck = password_verify($_POST['signinPassword'], $userInfos['user_password']);
+                if (($_POST['signinLogin'] !== $userInfos['user_login']) || ($hashCheck == false)) {
                     echo 'Un des 2 champs est incorrect';
                 } else {
                     if ($userInfos['user_role'] == '1') {
                         // adminPanel
                         $_SESSION['id'] = $userInfos['id'];
                         $_SESSION['login'] = $userInfos['user_name'];
-                        $_SESSION['role'] = $userInfos['user_role']; 
+                        $_SESSION['role'] = $userInfos['user_role'];
                         header('Location: index.php?action=adminPanel');
                         exit;
-                    } elseif ($userInfos['user_role'] == '0') {                        
-                        
+                    } elseif ($userInfos['user_role'] == '0') {
+
                         $_SESSION['id'] = $userInfos['id'];
-                        $_SESSION['login'] = $userInfos['user_name']; 
-                        $_SESSION['role'] = $userInfos['user_role']; 
+                        $_SESSION['login'] = $userInfos['user_name'];
+                        $_SESSION['role'] = $userInfos['user_role'];
                         header('Location: index.php?action=listPosts');
                         exit;
                     }
@@ -49,11 +49,35 @@ class UsersController
             }
         }
     }
+    public function signUp()
+    {
+        require 'view/signupView.php';
+
+        if (isset($_POST['signupLogin'], $_POST['signupUsername'], $_POST['signupPassword'])) {
+
+            if (!empty($_POST['signupLogin'] && !empty($_POST['signupPassword']) && !empty($_POST['signupUsername']))) {
+
+                $usersManager = new UsersManager();
+                $userLogin = $usersManager->getUser($_POST['signupLogin']);
+
+                if ($_POST['signupLogin'] == $userLogin['user_login']) {
+                    echo "login déjà pris";
+                } else {
+                    $hash = password_hash($_POST['signupPassword'], PASSWORD_DEFAULT);
+                    $userCreation = $usersManager->signUp($_POST['signupLogin'], $_POST['signupUsername'], $hash);
+                    header('Location: index.php');
+                    exit;
+                }
+            } else {
+                echo "Un des champs est vide";
+            }
+        } 
+    }
     public function adminPanel()
-    {        
+    {
         $postsManager = new PostsManager();
         $posts = $postsManager->getListPosts();
-        require 'view/adminView.php';       
+        require 'view/adminView.php';
     }
     public function disconnect()
     {

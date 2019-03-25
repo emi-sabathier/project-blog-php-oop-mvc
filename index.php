@@ -3,7 +3,7 @@
 use Blog\controller\CommentsController;
 use Blog\controller\PostsController;
 use Blog\controller\UsersController;
-
+session_start();
 require 'controller/PostsController.php';
 require 'controller/CommentsController.php';
 require 'controller/UsersController.php';
@@ -24,11 +24,14 @@ if (isset($_GET['action'])) {
         case 'postComment':
             $commentsController->postComment();
             break;
-        case 'listComments':
-            $commentsController->listCommentsAdmin();
+        case 'reportComment':
+            $commentsController->reportComment();
             break;
-        case 'login':
-            $usersController->login();
+        case 'signin':
+            $usersController->signIn();
+            break;
+        case 'signup':
+            $usersController->signUp();
             break;
         case 'disconnect':
             $usersController->disconnect();
@@ -39,8 +42,14 @@ if (isset($_GET['action'])) {
         case 'deletePost':
             $postsController->deletePostAdmin();
             break;
+        case 'deleteComment':
+            $commentsController->deleteCommentAdmin();
+            break;
         case 'viewPost':
             $postsController->displayPostAdmin();
+            break;
+        case 'listComments':
+            $commentsController->listCommentsAdmin();
             break;
         case 'addPost':
             $postsController->addPost();
@@ -53,9 +62,6 @@ if (isset($_GET['action'])) {
             break;
         case 'updatePost':
             $postsController->updatePostAdmin();
-            break;
-        case 'deleteComment':
-            $commentsController->deleteCommentAdmin();
             break;
         default:
             header('Location: index.php');
