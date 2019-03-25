@@ -8,8 +8,7 @@
             <?=$post['title']?></strong>
     </h3>
     <p>Par
-        <strong>
-            <?=$post['user_name']?></strong> posté le
+        <strong> Jean Forteroche </strong> posté le
         <?=$post['post_date_fr']?>
     </p>
     <p>
@@ -21,20 +20,12 @@
 
 <form action="index.php?action=postComment&amp;postId=<?=$post['id']?>" method="post">
 
-    <?php if (isset($_SESSION['role'])): ?>
-        <div>
-            <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="author" value="<?= $_SESSION['login'] ?>" />
-        </div>
+    <?php if (isset($_SESSION['login'])): ?>        
         <div>
             <label for="comment">Commentaire</label><br />
             <textarea id="comment" name="comment" cols="50" rows="5" required></textarea>
         </div>
-    <?php else: ?>
-        <div>
-            <label for="author">Auteur</label><br />
-            <input type="text" id="author" name="author" disabled />
-        </div>
+    <?php else: ?>        
         <div>
             <label for="comment">Commentaire</label><br />
             <textarea id="comment" name="comment" cols="50" rows="5" disabled></textarea>
@@ -52,10 +43,10 @@
         <strong>
             <?= htmlspecialchars($comment['author']);?></strong>
         Le
-        <?=htmlspecialchars($comment['comment_date_fr']);?>
+        <?= htmlspecialchars($comment['comment_date_fr']);?>
     </p>
     <p>
-        <?=htmlspecialchars($comment['content']);?>
+        <?= htmlspecialchars($comment['content']);?>
     </p>
 <?php endforeach;?>
 <?php $content = ob_get_clean();

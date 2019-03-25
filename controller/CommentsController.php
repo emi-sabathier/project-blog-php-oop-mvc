@@ -1,28 +1,22 @@
 <?php
 namespace Blog\controller;
-
 use Blog\model\CommentsManager;
-
 require_once 'model/CommentsManager.php';
-
 class CommentsController
 {
     public function postComment()
     {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
-            if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-
+            if (isset($_SESSION['login']) && !empty($_POST['comment'])) {
                 $commentsManager = new CommentsManager();
-                $newComment = $commentsManager->addComment($_GET['postId'], $_POST['author'], $_POST['comment']);
-
+                $newComment = $commentsManager->addComment($_GET['postId'], $_SESSION['login'], $_POST['comment']);
+                
                 header('Location: index.php?action=displayPost&postId=' . $_GET['postId']);
                 exit;
-
             } else {
                 header('Location: index.php?action=displayPost&postId=' . $_GET['postId']);
                 exit;
             }
-
         } else {
             header('Location: index.php?action=displayPost&postId=' . $_GET['postId']);
             exit;

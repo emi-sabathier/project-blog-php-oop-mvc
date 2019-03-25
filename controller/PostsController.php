@@ -83,11 +83,11 @@ class PostsController
                 header('Location: index.php?action=editPost&postId=' . $_GET['postId']);
                 exit;
             } else {
-                header('Location: ');
+                header('Location: index.php');
                 exit;
             }
         } else {
-            echo "jambon, pas bon le postId";
+            echo "pas bon le postId";
         }
     }
     public function deletePostAdmin()

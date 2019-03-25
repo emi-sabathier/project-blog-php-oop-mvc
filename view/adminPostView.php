@@ -10,8 +10,7 @@ ob_start();
             <?= $post['title'] ?></strong>
     </h3>
     <p>Par
-        <strong>
-            <?= $post['user_name'] ?></strong> posté le
+        <strong>Jean Forteroche</strong> posté le
         <?= $post['post_date_fr'] ?>
     </p>
     <p>
