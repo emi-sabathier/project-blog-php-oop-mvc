@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
             $commentsController->postComment();
             break;
         case 'reportComment':
-            $commentsController->reportComment();
+            $commentsController->reportCommentAdmin();
             break;
         case 'signin':
             $usersController->signIn();

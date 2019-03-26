@@ -3,6 +3,7 @@ namespace Blog\controller;
 
 use Blog\model\PostsManager;
 use Blog\model\UsersManager;
+use Blog\model\CommentsManager;
 
 require_once 'model/UsersManager.php';
 require_once 'model/PostsManager.php';
@@ -76,7 +77,9 @@ class UsersController
     public function adminPanel()
     {
         $postsManager = new PostsManager();
+        $commentsManager = new CommentsManager();
         $posts = $postsManager->getListPosts();
+        $reportedComments = $commentsManager->getReportedComments();
         require 'view/adminView.php';
     }
     public function disconnect()

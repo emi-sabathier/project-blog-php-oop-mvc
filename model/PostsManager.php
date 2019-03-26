@@ -8,20 +8,17 @@ class PostsManager extends Manager
 {
 
     public function getListPosts() {
-        // 
         $db = $this->dbconnect(); 
         $q = $db->query
         ('SELECT id, title, author_id, content, 
         DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr
         FROM posts
         ORDER BY post_date DESC');
-        $posts = $q->fetchAll();
-        
+        $posts = $q->fetchAll();        
         return $posts; 
     }
 
     public function getPost($postId) {
-
         $db = $this->dbConnect();
         $q = $db->prepare
         ('SELECT id, title, content, DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr FROM posts WHERE id = ?');
@@ -31,16 +28,14 @@ class PostsManager extends Manager
     }
 
     public function deletePostAdmin($postId) {
-
         $db = $this->dbConnect();
         $q = $db->prepare('DELETE FROM posts WHERE id = ?');
         $q->execute(array($postId));
     }
 
     public function createPostAdmin($title, $content) {
-
         $db = $this->dbConnect();
-        $q = $db->prepare('INSERT INTO posts(title, content, post_date) VALUES(?, ?, 1, NOW())');
+        $q = $db->prepare('INSERT INTO posts(title, content, author_id, post_date) VALUES(?, ?, 1, NOW())');
         $q->execute(array($title, $content));
     }
 
@@ -48,9 +43,6 @@ class PostsManager extends Manager
         $db = $this->dbConnect();
         $q = $db->prepare('UPDATE posts SET title = ?, content = ? WHERE id = ?');
         $q->execute(array($title, $content, $postId));
-
-        $updateComment = $q->fetch();
-        return $updateComment;
     }
 }
 

@@ -1,6 +1,6 @@
 <?php $title = 'Panneau d\'administration';?>
 
-<?php ob_start(); ?>
+<?php ob_start();?>
 <h1>Panneau d'administration</h1>
 
 <?php if (isset($_SESSION)): ?>
@@ -10,8 +10,35 @@
     <?=$_SESSION['login'];?>
 </p>
 <a href="index.php?action=addPost" class="btn btn-primary">Créer un article</a>
-<h3>Liste des posts</h3>
 
+<h3>Commentaires signalés</h3>
+
+<?php if (empty($reportedComments)): ?>
+
+    <p>Aucun commentaire signalé</p>
+
+<?php else: ?>
+
+<table class="text-center w-75 p-3">
+    <tr>
+        <th>Auteur</th>
+        <th>Commentaire</th>
+        <th>Action</th>
+    </tr>
+    <?php foreach ($reportedComments as $report): ?>
+    <tr>
+        <td><?=$report['author']?></td>
+        <td><?=$report['content']?></td>
+        <td>
+            <a href="index.php?action=deleteComment&commentId=<?=$report['id']?>" class="btn btn-danger">Effacer</a>
+        </td>
+    </tr>
+
+    <?php endforeach;?>
+<?php endif;?>
+
+</table>
+<h3>Liste des posts</h3>
 <table class="text-center w-75 p-3">
     <tr>
         <th>Titre</th>
@@ -45,7 +72,7 @@
 else:
     header('Location: index.php?action=listPosts');
     exit;
-    endif;
+endif;
 endif;
 $content = ob_get_clean();
 

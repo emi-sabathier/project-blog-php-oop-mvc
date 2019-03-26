@@ -44,6 +44,7 @@
             <?= htmlspecialchars($comment['author']);?></strong>
         Le
         <?= htmlspecialchars($comment['comment_date_fr']);?>
+        <a href="index.php?action=reportComment&postId=<?= $comment['post_id'] ?>&commentId=<?= $comment['id'] ?>">Signaler</a>
     </p>
     <p>
         <?= htmlspecialchars($comment['content']);?>
