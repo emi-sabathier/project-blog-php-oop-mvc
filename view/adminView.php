@@ -25,7 +25,9 @@
         <th>Commentaire</th>
         <th>Action</th>
     </tr>
+
     <?php foreach ($reportedComments as $report): ?>
+
     <tr>
         <td><?=$report['author']?></td>
         <td><?=$report['content']?></td>
@@ -44,17 +46,26 @@
         <th>Titre</th>
         <th>Auteur</th>
         <th>Date</th>
+        <th>Commentaires</th>
         <th colspan="3">Actions</th>
     </tr>
     <?php foreach ($posts as $post): ?>
     <tr>
-        <td><strong>
-                <?=$post['title']?></strong></td>
+        <td>
+            <strong><?=$post['title']?></strong>
+        </td>
         <td>
             Jean Forteroche
         </td>
         <td>
             <?=$post['post_date_fr']?>
+        </td>
+        <td>
+            <?php if($post['nb_comments'] == 0) : ?>
+                <?= $post['nb_comments']?>               
+            <?php else: ?>
+                <a href="index.php?action=listComments&postId=<?=$post['id']?>"><?= $post['nb_comments']?></a>            
+            <?php endif; ?>
         </td>
         <td><a href="index.php?action=viewPost&postId=<?=$post['id']?>" class="btn btn-primary">Voir</a></td>
         <td><a href="index.php?action=editPost&postId=<?=$post['id']?>" class="btn btn-secondary">Modifier</a></td>

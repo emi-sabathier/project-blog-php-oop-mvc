@@ -10,7 +10,7 @@ class PostsManager extends Manager
     public function getListPosts() {
         $db = $this->dbconnect(); 
         $q = $db->query
-        ('SELECT id, title, author_id, content, 
+        ('SELECT id, title,content, 
         DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr
         FROM posts
         ORDER BY post_date DESC');
@@ -26,7 +26,20 @@ class PostsManager extends Manager
         $post = $q->fetch(); 
         return $post; 
     }
-
+    public function getListPostsAdmin() {
+        $db = $this->dbconnect(); 
+        $q = $db->query
+        ('SELECT posts.id, posts.title, posts.content, 
+        DATE_FORMAT(post_date, \'%d/%m/%Y à %Hh%i\') AS post_date_fr,
+        COUNT(comments.id) AS nb_comments
+        FROM posts 
+        LEFT JOIN comments
+        ON posts.id = comments.post_id
+        GROUP BY posts.id
+        ORDER BY post_date DESC');
+        $posts = $q->fetchAll();
+        return $posts;
+    }
     public function deletePostAdmin($postId) {
         $db = $this->dbConnect();
         $q = $db->prepare('DELETE FROM posts WHERE id = ?');
@@ -35,7 +48,7 @@ class PostsManager extends Manager
 
     public function createPostAdmin($title, $content) {
         $db = $this->dbConnect();
-        $q = $db->prepare('INSERT INTO posts(title, content, author_id, post_date) VALUES(?, ?, 1, NOW())');
+        $q = $db->prepare('INSERT INTO posts(title, content, post_date) VALUES(?, ?, NOW())');
         $q->execute(array($title, $content));
     }
 
@@ -45,6 +58,3 @@ class PostsManager extends Manager
         $q->execute(array($title, $content, $postId));
     }
 }
-
-
-

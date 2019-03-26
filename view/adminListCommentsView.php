@@ -5,18 +5,18 @@
 <h3>Liste des commentaires</h3>
 <table class="text-center w-75 p-3">
     <tr>
+        <th>Titre</th>
         <th>Auteur</th>
         <th>Date</th>
         <th>Commentaire</th>
-        <th>Signalements</th>
         <th>Action</th>
     </tr>   
-    <?php foreach ($comments as $comment): ?> 
+    <?php foreach ($comments as $comment): ?>
     <tr>
+        <td><?=$comment['title'] ?></td>
         <td><?=$comment['author']?></td>
         <td><?=$comment['comment_date_fr']?></td>
         <td><?=$comment['content']?></td>
-        <td></td>
         <td><a href="index.php?action=deleteComment&commentId=<?=$comment['id']?>" class="btn btn-danger">Effacer</a></td>
     </tr>
     <?php endforeach;?>

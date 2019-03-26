@@ -78,7 +78,7 @@ class UsersController
     {
         $postsManager = new PostsManager();
         $commentsManager = new CommentsManager();
-        $posts = $postsManager->getListPosts();
+        $posts = $postsManager->getListPostsAdmin();
         $reportedComments = $commentsManager->getReportedComments();
         require 'view/adminView.php';
     }
