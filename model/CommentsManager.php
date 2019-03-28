@@ -28,15 +28,15 @@ class CommentsManager extends Manager
         $comments = $q->fetchAll();
         return $comments;
     }
-    public function reportComment($commentId)
+    public function reportComment($reportNb, $commentId)
     {
         $db = $this->dbconnect();
-        $q = $db->prepare('UPDATE comments SET report = 1 WHERE id = ?');
-        $q->execute(array($commentId));
+        $q = $db->prepare('UPDATE comments SET report = ? WHERE id = ?');
+        $q->execute(array($reportNb, $commentId));
     }
     public function getReportedComments(){
         $db = $this->dbConnect();
-        $q = $db->query('SELECT id, author, content, post_id, report FROM comments WHERE report = 1');
+        $q = $db->query('SELECT id, author, content, post_id, report FROM comments WHERE report = "1" ');
         $reportedComments = $q->fetchAll();
         return $reportedComments;
     }

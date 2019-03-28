@@ -38,13 +38,14 @@
         
 </form>
 
+<?php $i = 0; ?>
 <?php foreach ($postComments as $comment): ?>
     <p>
         <strong>
             <?= htmlspecialchars($comment['author']);?></strong>
         Le
         <?= htmlspecialchars($comment['comment_date_fr']);?>
-        <a href="index.php?action=reportComment&postId=<?= $comment['post_id'] ?>&commentId=<?= $comment['id'] ?>">Signaler</a>
+        <a href="index.php?action=reportComment&postId=<?= $comment['post_id'] ?>&commentId=<?= $comment['id'] ?>" class="btn btn-danger" id="comment<?= $i++; ?>">Signaler</a>
     </p>
     <p>
         <?= htmlspecialchars($comment['content']);?>

@@ -47,7 +47,7 @@ class CommentsController
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 $commentsManager = new CommentsManager();
-                $reportComment = $commentsManager->reportComment($_GET['commentId']);
+                $reportComment = $commentsManager->reportComment($_POST['reportNb'], $_GET['commentId']);
                 header('Location: index.php?action=displayPost&postId=' . $_GET['postId']);
             } else {
                 header('Location: index.php');

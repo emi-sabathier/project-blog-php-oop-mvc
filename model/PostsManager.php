@@ -6,7 +6,6 @@ require_once 'Manager.php';
 
 class PostsManager extends Manager 
 {
-
     public function getListPosts() {
         $db = $this->dbconnect(); 
         $q = $db->query

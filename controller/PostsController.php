@@ -25,9 +25,12 @@ class PostsController
             $commentsManager = new CommentsManager();
             $post = $postsManager->getPost($_GET['postId']);
             $postComments = $commentsManager->getListComments($_GET['postId']);
-
-            require 'view/postView.php';
-
+            if (empty($post)) {
+                header('Location: index.php');
+                exit;
+            } else {
+                require 'view/postView.php';
+            }
         } else {
             header('Location: index.php');
             exit;
@@ -48,24 +51,25 @@ class PostsController
     }
     public function addPost()
     {
+        
         require 'view/createPostView.php';
     }
     public function createPostAdmin()
     {
-        if (!empty($_POST['title']) && !empty($_POST['content'])) {
+        if (!empty($_POST['title']) && !empty($_POST['content']) && $_SESSION['role'] == 1) {
             $postsManager = new PostsManager();
             $postCreated = $postsManager->createPostAdmin($_POST['title'], $_POST['content']);
 
             header('Location: index.php?action=addPost');
             exit;
         } else {
-            header('Location: index.php?action=addPost');
+            header('Location: index.php');
             exit;
         }
     }
     public function editPost(){
         
-        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+        if (isset($_GET['postId']) && ($_GET['postId'] > 0) && $_SESSION['role'] == 1) {
             $postsManager = new PostsManager();
             $post = $postsManager->getPost($_GET['postId']);
             require 'view/updatePostView.php';
@@ -76,7 +80,7 @@ class PostsController
         }
     }
     public function updatePostAdmin(){
-        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+        if (isset($_GET['postId']) && ($_GET['postId'] > 0) && $_SESSION['role'] == 1) {
             if(!empty($_POST['title']) && !empty($_POST['content'])) {   
                 $postsManager = new PostsManager();             
                 $updatedPost = $postsManager->updatePostAdmin($_POST['title'], $_POST['content'], $_GET['postId']);
@@ -87,12 +91,13 @@ class PostsController
                 exit;
             }
         } else {
-            echo "pas bon le postId";
+            header('Location: index.php');
+            exit;
         }
     }
     public function deletePostAdmin()
     {
-        if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+        if (isset($_GET['postId']) && ($_GET['postId'] > 0) && $_SESSION['role'] == 1) {
             $postsManager = new PostsManager();
             $commentsManager = new CommentsManager();
             $deletePost = $postsManager->deletePostAdmin($_GET['postId']);
