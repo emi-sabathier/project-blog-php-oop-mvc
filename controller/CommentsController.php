@@ -11,7 +11,7 @@ class CommentsController
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
             if (isset($_SESSION['login']) && !empty($_POST['comment'])) {
                 $commentsManager = new CommentsManager();
-                $newComment = $commentsManager->addComment($_GET['postId'], $_SESSION['login'], $_POST['comment']);
+                $newComment = $commentsManager->addComment($_GET['postId'], $_SESSION['id'], htmlspecialchars($_POST['comment']));
 
                 header('Location: index.php?action=displayPost&postId=' . $_GET['postId']);
                 exit;

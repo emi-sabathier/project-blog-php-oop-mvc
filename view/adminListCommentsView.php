@@ -14,7 +14,7 @@
     <?php foreach ($comments as $comment): ?>
     <tr>
         <td><?=$comment['title'] ?></td>
-        <td><?=$comment['author']?></td>
+        <td><?=$comment['user_name']?></td>
         <td><?=$comment['comment_date_fr']?></td>
         <td><?=$comment['content']?></td>
         <td><a href="index.php?action=deleteComment&commentId=<?=$comment['id']?>" class="btn btn-danger">Effacer</a></td>

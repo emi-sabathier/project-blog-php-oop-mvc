@@ -29,7 +29,7 @@
     <?php foreach ($reportedComments as $report): ?>
 
     <tr>
-        <td><?=$report['author']?></td>
+        <td><?=$report['user_name']?></td>
         <td><?=$report['content']?></td>
         <td>
             <a href="index.php?action=deleteComment&commentId=<?=$report['id']?>" class="btn btn-danger">Effacer</a>

@@ -42,13 +42,13 @@
 <?php foreach ($postComments as $comment): ?>
     <p>
         <strong>
-            <?= htmlspecialchars($comment['author']);?></strong>
+            <?= $comment['user_name'];?></strong>
         Le
-        <?= htmlspecialchars($comment['comment_date_fr']);?>
+        <?= $comment['comment_date_fr'];?>
         <a href="index.php?action=reportComment&postId=<?= $comment['post_id'] ?>&commentId=<?= $comment['id'] ?>" class="btn btn-danger" id="comment<?= $i++; ?>">Signaler</a>
     </p>
     <p>
-        <?= htmlspecialchars($comment['content']);?>
+        <?= $comment['content'];?>
     </p>
 <?php endforeach;?>
 <?php $content = ob_get_clean();

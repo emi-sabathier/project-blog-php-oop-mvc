@@ -12,7 +12,7 @@ class UsersController
 {
     public function signIn()
     {
-        // Check if member or admin sessions exists
+        // redirection après login
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] == '1') {
                 header('Location: index.php?action=adminPanel');
@@ -31,18 +31,14 @@ class UsersController
                 if (($_POST['signinLogin'] !== $userInfos['user_login']) || ($hashCheck == false)) {
                     echo 'Un des 2 champs est incorrect';
                 } else {
+                    $_SESSION['id'] = $userInfos['id'];
+                    $_SESSION['login'] = $userInfos['user_name'];
+                    $_SESSION['role'] = $userInfos['user_role'];
+
                     if ($userInfos['user_role'] == '1') {
-                        // adminPanel
-                        $_SESSION['id'] = $userInfos['id'];
-                        $_SESSION['login'] = $userInfos['user_name'];
-                        $_SESSION['role'] = $userInfos['user_role'];
                         header('Location: index.php?action=adminPanel');
                         exit;
                     } elseif ($userInfos['user_role'] == '0') {
-
-                        $_SESSION['id'] = $userInfos['id'];
-                        $_SESSION['login'] = $userInfos['user_name'];
-                        $_SESSION['role'] = $userInfos['user_role'];
                         header('Location: index.php?action=listPosts');
                         exit;
                     }
@@ -65,7 +61,7 @@ class UsersController
                     echo "login déjà pris";
                 } else {
                     $hash = password_hash($_POST['signupPassword'], PASSWORD_DEFAULT);
-                    $userCreation = $usersManager->signUp($_POST['signupLogin'], $_POST['signupUsername'], $hash);
+                    $userCreation = $usersManager->signUp(htmlspecialchars($_POST['signupLogin']), htmlspecialchars($_POST['signupUsername']), $hash);
                     header('Location: index.php');
                     exit;
                 }
