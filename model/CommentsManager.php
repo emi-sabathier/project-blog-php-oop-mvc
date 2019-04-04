@@ -20,7 +20,7 @@ class CommentsManager extends Manager
         DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') 
         AS comment_date_fr 
         FROM comments 
-        LEFT JOIN posts ON comments.post_id = posts.id 
+        INNER JOIN posts ON comments.post_id = posts.id 
         INNER JOIN users ON comments.author_id = users.id WHERE post_id = ?
         ORDER BY comment_date DESC');
         $q->execute(array($postId));
@@ -36,9 +36,10 @@ class CommentsManager extends Manager
     public function getReportedComments(){
         $db = $this->dbConnect();
         $q = $db->query
-        ('SELECT comments.id, comments.author_id, comments.content, comments.post_id, comments.report, users.user_name
+        ('SELECT comments.id, comments.author_id, comments.content, comments.post_id, comments.report, users.user_name, posts.title
         FROM comments
         INNER JOIN users ON comments.author_id = users.id
+        INNER JOIN posts ON posts.id = comments.post_id
         WHERE report > 0 ');
         $reportedComments = $q->fetchAll();
         return $reportedComments;
