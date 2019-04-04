@@ -48,17 +48,18 @@ class UsersController
     }
     public function signUp()
     {
-        require 'view/signupView.php';
-
+        $error = false;
+        $msg = "";
         if (isset($_POST['signupLogin'], $_POST['signupUsername'], $_POST['signupPassword'])) {
-
+            
             if (!empty($_POST['signupLogin'] && !empty($_POST['signupPassword']) && !empty($_POST['signupUsername']))) {
-
+                
                 $usersManager = new UsersManager();
                 $userLogin = $usersManager->getUser($_POST['signupLogin']);
-
+                
                 if ($_POST['signupLogin'] == $userLogin['user_login']) {
-                    echo "login déjà pris";
+                    $error = true;
+                    $msg = "Pseudo déjà utilisé";
                 } else {
                     $hash = password_hash($_POST['signupPassword'], PASSWORD_DEFAULT);
                     $userCreation = $usersManager->signUp(htmlspecialchars($_POST['signupLogin']), htmlspecialchars($_POST['signupUsername']), $hash);
@@ -66,9 +67,11 @@ class UsersController
                     exit;
                 }
             } else {
-                echo "Un des champs est vide";
+                $error = true;
+                $msg = "Un des champs est vide";
             }
-        } 
+        }
+        require 'view/signupView.php';
     }
     public function adminPanel()
     {
