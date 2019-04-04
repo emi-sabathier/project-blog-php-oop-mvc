@@ -3,7 +3,7 @@
 <?php
 ob_start();
 ?>
-<h1>Panneau d'administration</h1>
+<h2>Panneau d'administration</h2>
 <h3>Créer un post</h3>
 <div>
     <form action="index.php?action=createPost" method="post">
@@ -11,7 +11,7 @@ ob_start();
         <input type="text" id="title" name="title"><br />
         <label for="content">Votre texte : </label><br />
         <textarea id="postArea" name="content"></textarea>
-        <input type="submit" value="Envoyer" class="btn btn-primary" />
+        <input type="submit" value="Envoyer" class="btn btn-primary p-1" />
     </form>
     <p><a href="index.php?action=adminPanel">Retour</a></p>
 </div>

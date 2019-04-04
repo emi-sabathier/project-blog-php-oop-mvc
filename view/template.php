@@ -22,7 +22,7 @@
     </script>
 </head>
 
-<body class="bg-dark oala">
+<body class="bg-dark">
 
     <div class="menu-btn">
         <a class="btn-open"></a>
@@ -47,7 +47,7 @@
         <nav class="navbar navbar-dark bg-dark">
             <div class="text-white text-center mx-auto">
                 <div class="row">
-                    <div class="col-md-6 my-auto">
+                    <div class="col-md-6 my-auto logo-title">
                         Billet simple pour
                     </div>
                     <div class="col-md-6 alaska">

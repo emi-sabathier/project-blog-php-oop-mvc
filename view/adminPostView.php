@@ -3,7 +3,7 @@
 <?php
 ob_start();
 ?>
-<h1>Panneau d'administration</h1>
+<h2>Panneau d'administration</h2>
 <div>
     <h3>
         <strong>

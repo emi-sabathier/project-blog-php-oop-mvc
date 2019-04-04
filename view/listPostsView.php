@@ -24,7 +24,7 @@ foreach ($posts as $post): ?>
                     le
                     <?=$post['post_date_fr']?>
                 </p>
-                <p class="text-center"><a href="index.php?action=displayPost&postId=<?=$post['id']?>" class="btn btn-primary">Voir l'article</a></p>
+                <p class="text-center"><a href="index.php?action=displayPost&postId=<?=$post['id']?>" class="btn btn-primary p-1">Voir l'article</a></p>
             </div>
         </article>
         </div>

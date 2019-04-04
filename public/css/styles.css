@@ -6,10 +6,14 @@
   font-style: normal;
 
 }
+html{
+  height: 100%;
+}
 body {
   font-family: "Source sans pro";
   position: relative;
   z-index: 1;
+  height: 100%;
 }
 body::before{
   content: "";
@@ -29,8 +33,9 @@ body::before{
   font-size: 4.5rem;
   padding-left: 0.5rem;
 }
-.logo {
-  
+.logo-title{
+  font-weight:bold;
+  font-size:1.5rem;
 }
 /******** CARD *********/
   .cards-bg {
@@ -42,7 +47,10 @@ body::before{
   font-weight:bold;
   font-size: 2rem;
 }
+/******** MENU *********/
+section.admin-create{
 
+}
 /******** MENU *********/
 
 h4 {
@@ -89,7 +97,7 @@ a {
 }
 
 .btn-open:hover:after {
-  color: rgba(0, 170, 212, 0.8);
+  color: rgba(255,255,255, 1);
 }
 
 .btn-close:after {
@@ -117,7 +125,7 @@ a {
   top: 0;
   right: 0;
   width: 30%;
-  min-width: 170px;
+  min-width: 200px;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -143,6 +151,7 @@ a {
   padding: 0;
   width: 100%;
   height: 15%;
+  font-size:1.5rem;
   font-weight:bold;
   list-style: none;
   text-align: center;

@@ -1,23 +1,25 @@
 <?php $title = 'Panneau d\'administration';?>
 
 <?php ob_start(); ?>
-<h1>Panneau d'administration</h1>
+<h2>Panneau d'administration</h2>
 <h3>Liste des commentaires</h3>
-<table class="text-center w-75 p-3">
-    <tr>
-        <th>Titre</th>
-        <th>Auteur</th>
-        <th>Date</th>
-        <th>Commentaire</th>
-        <th>Action</th>
-    </tr>   
+<table class="text-center table-striped table-borderless table-responsive table w-100 d-block d-sm-table d-md-table">
+    <thead class="thead-dark">  
+        <tr>
+            <th>Titre</th>
+            <th>Auteur</th>
+            <th>Date</th>
+            <th>Commentaire</th>
+            <th>Action</th>
+        </tr>   
+    </thead>
     <?php foreach ($comments as $comment): ?>
     <tr>
-        <td><?=$comment['title'] ?></td>
+        <td><strong><?=$comment['title'] ?></strong></td>
         <td><?=$comment['user_name']?></td>
         <td><?=$comment['comment_date_fr']?></td>
         <td><?=$comment['content']?></td>
-        <td><a href="index.php?action=deleteComment&commentId=<?=$comment['id']?>" class="btn btn-danger">Effacer</a></td>
+        <td><a href="index.php?action=deleteComment&commentId=<?=$comment['id']?>" class="btn btn-danger p-1">Effacer</a></td>
     </tr>
     <?php endforeach;?>
 </table>

@@ -13,12 +13,12 @@
             <input type="password" id="signinPassword" name="signinPassword" rows="10"></textarea>
         </div>
         <div>
-            <input type="submit" value="Envoyer" class="btn btn-primary" />
+            <input type="submit" value="Envoyer" class="btn btn-primary p-1" />
         </div>
     </form>
 </div>
 
-<a href="index.php" class="btn btn-secondary">Retour</a>
+<a href="index.php" class="btn btn-secondary p-1">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
 

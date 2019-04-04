@@ -18,13 +18,15 @@
             <input type="password" id="signupPassword" name="signupPassword" rows="10"></textarea>
         </div>
         <div>
-            <input type="submit" value="Envoyer" class="btn btn-primary" />
+            <input type="submit" value="Envoyer" class="btn btn-primary p-1" />
         </div>
+        <?php if($error) : ?>
+            <p><?= $msg ?></p>
+        <?php endif; ?>
     </form>
 </div>
 
 <a href="index.php" class="btn btn-secondary">Retour</a>
 
 <?php $content = ob_get_clean(); ?>
-
 <?php require 'template.php'; ?>
