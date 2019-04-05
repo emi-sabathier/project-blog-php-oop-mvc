@@ -33,7 +33,7 @@ body::before{
     bottom: 0;
     left: 0;
     right: 0;
-    background: url("../img/image_alaska_1.jpg") center center;
+    background: url("../img/bg.jpg") center center;
     opacity: .4;
     background-size:cover;
 }
@@ -52,6 +52,10 @@ h2, h3 {
 .alaska a:hover{  
   color:#fff;
   text-decoration: none;
+}
+.alaska-author{
+  font-family: "tahu", "Open Sans", sans-serif;
+  font-size:1.6rem;
 }
 .logo-title{
   font-weight:bold;
@@ -75,10 +79,7 @@ tbody tr td:first-child {
 }
 .admin-posts tbody tr td:nth-child(3), .admin-report tbody tr td:nth-child(4) {
   font-family:"source black", "Open Sans", sans-serif;
-
 }
-/******** FORM *********/
-
 /******** MENU *********/
 
 h4 {

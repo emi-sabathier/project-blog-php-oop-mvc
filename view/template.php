@@ -1,9 +1,19 @@
 <!doctype html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Le blog du nouveau Roman de Jean Forteroche : Un billet simple pour l'Alaska">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="billet simple pour l'alaska">
+    <meta property="og:title" content="Un billet simple pour l'Alaska">
+    <meta property="og:url" content="http://jforteroche.emisabathier.com">
+    <meta property="og:description" content="Le blog du nouveau Roman de Jean Forteroche : Un billet simple pour l'Alaska">
+    <meta property="og:image" content="http://jforteroche.emisabathier.com/image_alaska_9.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@alaskajforteroche">
+    <meta name="twitter:title" content="Un billet simple pour l'Alaska">
+    <meta name="twitter:description" content="Le blog du nouveau Roman de Jean Forteroche : Un billet simple pour l'Alaska">
     <title>
         Un billet simple pour l'Alaska -
         <?= $title ?>
@@ -51,14 +61,25 @@
                     </div>
                     <div class="col-md-6 alaska">
                         <a href="index.php">l'Alaska.</a>
+                        
                     </div>
-
+                </div>
+                <div class="row">
+                    <p class="col-md-12 text-center mb-0">Le nouveau roman de <span class="alaska-author">J. Forteroche</span></p>
                 </div>
             </div>
         </nav>
         <div class="cards-bg">
             <?=$content?>
         </div>
+        <footer class="bg-dark">
+            <div class="row text-center">
+                <p class="col-md-3"><a href="#" class="text-white">Mentions légales</a></p>
+                <p class="col-md-3"><a href="#" class="text-white">Politique de confidentialité</a></p>
+                <p class="col-md-3"><a href="#" class="text-white">Copyright© 2019</a></p>
+                <p class="col-md-3"><a href="#" class="text-white">Contact</a></p>
+            </div>
+        </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js">
     </script>

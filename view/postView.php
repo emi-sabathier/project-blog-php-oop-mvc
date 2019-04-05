@@ -13,8 +13,7 @@
     </p>
     <p>
         <?=$post['content']?>
-    </p>
-    <p><a href="index.php" class="btn btn-secondary p-1">Retour</a></p>
+    </p>   
 </div>
 
 
@@ -26,7 +25,7 @@
             <textarea id="comment" name="comment" cols="50" rows="5" required class="form-control form-control-sm"></textarea>
         </div>
         <div>
-            <input type="submit" value="Envoyer" class="btn btn-primary my-3 p-1" />
+            <input type="submit" value="Envoyer" class="btn btn-primary mt-3 mb-0 p-1" />
         </div>
     <?php else: ?>        
         <p><strong>Vous devez vous connecter pour pouvoir poster un commentaire</strong></p>
@@ -49,5 +48,6 @@
         <?= $comment['content'];?>
     </p>
 <?php endforeach;?>
+<p><a href="index.php" class="btn btn-secondary p-1">Retour</a></p>
 <?php $content = ob_get_clean();
 require 'template.php';?>
