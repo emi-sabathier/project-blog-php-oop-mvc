@@ -4,13 +4,23 @@
     url('../fonts/tahu.woff') format('woff');
   font-weight: normal;
   font-style: normal;
-
 }
-html{
-  height: 100%;
+@font-face {
+  font-family: 'source';
+  src: url('../fonts/source_regular.woff2') format('woff2'),
+    url('../fonts/source_regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'source black';
+  src: url('../fonts/source_black.woff2') format('woff2'),
+    url('../fonts/source_black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 body {
-  font-family: "Source sans pro";
+  font-family: "source", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
   height: 100%;
@@ -27,11 +37,21 @@ body::before{
     opacity: .4;
     background-size:cover;
 }
+h2, h3 {
+  font-family:"source black", "Open Sans", sans-serif;
+}
 /********* LOGO ********/
 .alaska {
   font-family: "tahu", "Open Sans", sans-serif;
   font-size: 4.5rem;
   padding-left: 0.5rem;
+}
+.alaska a{
+  color:#fff;
+}
+.alaska a:hover{  
+  color:#fff;
+  text-decoration: none;
 }
 .logo-title{
   font-weight:bold;
@@ -44,13 +64,21 @@ body::before{
     padding:1.5rem;
   }
 .card-title {
-  font-weight:bold;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  font-family:"source black", "Open Sans", sans-serif;
 }
-/******** MENU *********/
-section.admin-create{
+thead{
+  font-family:"source black", "Open Sans", sans-serif;
+}
+tbody tr td:first-child {
+  font-family:"source black", "Open Sans", sans-serif;
+}
+.admin-posts tbody tr td:nth-child(3), .admin-report tbody tr td:nth-child(4) {
+  font-family:"source black", "Open Sans", sans-serif;
 
 }
+/******** FORM *********/
+
 /******** MENU *********/
 
 h4 {
@@ -136,6 +164,7 @@ a {
 .menu {
   width: 100%;
   height: 100%;
+  font-family:"source black", "Open Sans", sans-serif;
 }
 
 .menu ul {

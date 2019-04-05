@@ -18,15 +18,15 @@
 </div>
 
 
-<form action="index.php?action=postComment&amp;postId=<?=$post['id']?>" method="post">
+<form action="index.php?action=postComment&amp;postId=<?=$post['id']?>" method="post" class="form-group">
 
     <?php if(isset($_SESSION['login'])): ?>        
         <div>
             <label for="comment">Commentaire</label><br />
-            <textarea id="comment" name="comment" cols="50" rows="5" required></textarea>
+            <textarea id="comment" name="comment" cols="50" rows="5" required class="form-control form-control-sm"></textarea>
         </div>
         <div>
-            <input type="submit" value="Envoyer" class="btn btn-primary p-1" />
+            <input type="submit" value="Envoyer" class="btn btn-primary my-3 p-1" />
         </div>
     <?php else: ?>        
         <p><strong>Vous devez vous connecter pour pouvoir poster un commentaire</strong></p>

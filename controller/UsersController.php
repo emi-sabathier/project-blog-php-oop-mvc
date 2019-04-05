@@ -11,7 +11,7 @@ require_once 'model/CommentsManager.php';
 class UsersController
 {
     public function signIn()
-    {
+    {        
         // redirection après login
         if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] == '1') {
@@ -23,13 +23,16 @@ class UsersController
                 exit;
             }
         } else {
-            require 'view/signinView.php';
+            $error = false;
+            $msg = "";
             if (isset($_POST['signinLogin'], $_POST['signinPassword'])) {
                 $usersManager = new UsersManager();
                 $userInfos = $usersManager->getUser($_POST['signinLogin']);
                 $hashCheck = password_verify($_POST['signinPassword'], $userInfos['user_password']);
+                
                 if (($_POST['signinLogin'] !== $userInfos['user_login']) || ($hashCheck == false)) {
-                    echo 'Un des 2 champs est incorrect';
+                    $error = true;
+                    $msg = 'Un des 2 champs est incorrect';
                 } else {
                     $_SESSION['id'] = $userInfos['id'];
                     $_SESSION['login'] = $userInfos['user_name'];
@@ -44,6 +47,7 @@ class UsersController
                     }
                 }
             }
+            require 'view/signinView.php';
         }
     }
     public function signUp()
@@ -66,10 +70,7 @@ class UsersController
                     header('Location: index.php');
                     exit;
                 }
-            } else {
-                $error = true;
-                $msg = "Un des champs est vide";
-            }
+            } 
         }
         require 'view/signupView.php';
     }

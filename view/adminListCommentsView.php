@@ -1,7 +1,7 @@
 <?php $title = 'Panneau d\'administration';?>
 
 <?php ob_start(); ?>
-<h2>Panneau d'administration</h2>
+<h2 class="text-center">Panneau d'administration</h2>
 <h3>Liste des commentaires</h3>
 <table class="text-center table-striped table-borderless table-responsive table w-100 d-block d-sm-table d-md-table">
     <thead class="thead-dark">  
@@ -23,8 +23,7 @@
     </tr>
     <?php endforeach;?>
 </table>
-
-<p><a href="index.php?action=adminPanel">Retour au panel</a></p>
+<p><a href="index.php?action=adminPanel"  class="btn btn-secondary  p-1">Retour</a></p>
 
 <?php
 $content = ob_get_clean();

@@ -52,13 +52,13 @@ if (isset($_GET['action'])) {
             $commentsController->listCommentsAdmin();
             break;
         case 'addPost':
-            $postsController->addPost();
+            $postsController->addPostAdmin();
             break;
         case 'createPost':
             $postsController->createPostAdmin();
             break;
         case 'editPost':
-            $postsController->editPost();
+            $postsController->editPostAdmin();
             break;
         case 'updatePost':
             $postsController->updatePostAdmin();

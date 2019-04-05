@@ -23,7 +23,6 @@
 </head>
 
 <body class="bg-dark">
-
     <div class="menu-btn">
         <a class="btn-open"></a>
     </div>
@@ -51,7 +50,7 @@
                         Billet simple pour
                     </div>
                     <div class="col-md-6 alaska">
-                        l'Alaska.
+                        <a href="index.php">l'Alaska.</a>
                     </div>
 
                 </div>
@@ -71,6 +70,7 @@
     </script>
     <script src="public/js/reportComment.js"></script>
     <script src="public/js/menu.js"></script>
+    <script src="public/js/formCheck.js"></script>
 </body>
 
 </html>

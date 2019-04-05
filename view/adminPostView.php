@@ -3,7 +3,7 @@
 <?php
 ob_start();
 ?>
-<h2>Panneau d'administration</h2>
+<h2 class="text-center">Panneau d'administration</h2>
 <div>
     <h3>
         <strong>
@@ -16,7 +16,7 @@ ob_start();
     <p>
         <?= $post['content'] ?>
     </p>
-    <p><a href="index.php?action=adminPanel">Retour</a></p>
+    <p><a href="index.php?action=adminPanel" class="btn btn-secondary p-1">Retour</a></p>
 </div>
 <?php 
 

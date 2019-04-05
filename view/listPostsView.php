@@ -1,4 +1,4 @@
-<?php $title = 'Liste des derniers billets';?>
+<?php $title = 'de Jean Forteroche';?>
 <?php ob_start();
 ?>
 
