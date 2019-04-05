@@ -11,4 +11,9 @@ $(document).ready(function () {
             $(".nav").fadeToggle(200);
             $(".menu-btn a").toggleClass('btn-open').toggleClass('btn-close');
         });
+        $('.container').on('click', function(){
+            $(".nav").fadeOut(200);
+            $(".menu-btn a").removeClass('btn-close');
+            $(".menu-btn a").addClass('btn-open');
+        });
     });
