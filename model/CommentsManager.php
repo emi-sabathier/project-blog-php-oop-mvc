@@ -40,7 +40,8 @@ class CommentsManager extends Manager
         FROM comments
         INNER JOIN users ON comments.author_id = users.id
         INNER JOIN posts ON posts.id = comments.post_id
-        WHERE report > 0 ');
+        WHERE report > 0
+        ORDER BY report DESC ');
         $reportedComments = $q->fetchAll();
         return $reportedComments;
     }

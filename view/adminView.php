@@ -1,7 +1,7 @@
 <?php $title = 'Panneau d\'administration';?>
 
 <?php ob_start();?>
-<section class="admin-create mb-4">
+<section class="admin-create text-center  mb-4">
     <h2>Panneau d'administration</h2>
 
     <?php if (isset($_SESSION)): ?>
@@ -11,7 +11,7 @@
     <a href="index.php?action=addPost" class="btn btn-primary p-1">Créer un article</a>
 </section>
 
-<section class="admin-report mb-4">
+<section class="admin-report text-center mb-4">
     <h3>Commentaires signalés</h3>
     
     <?php if (empty($reportedComments)): ?>
@@ -22,9 +22,10 @@
         <table class="text-center table-striped table-borderless table-responsive table w-100 d-block d-sm-table d-md-table">
             <thead class="thead-dark">
                 <tr>
-                    <th><strong>Titre</strong></th>
+                    <th>Titre</th>
                     <th>Auteur</th>
                     <th>Commentaire</th>
+                    <th>Signalement</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -32,9 +33,10 @@
             <?php foreach ($reportedComments as $report): ?>
         
             <tr>
-                <td><strong><?=$report['title']?><strong></td>
+                <td><?=$report['title']?></td>
                 <td><?=$report['user_name']?></td>
                 <td><?=$report['content']?></td>
+                <td><?=$report['report']?></td>
                 <td>
                     <a href="index.php?action=deleteComment&commentId=<?=$report['id']?>" class="btn btn-danger p-1">Effacer</a>
                 </td>
@@ -45,7 +47,7 @@
         
         </table>
 </section>
-<section class="admin-posts mb-4">
+<section class="admin-posts text-center mb-4">
     <h3>Liste des posts</h3>
     <div class="table-responsive">
         <table class="text-center table-striped table-borderless table w-100 d-block d-sm-table d-md-table">
@@ -60,7 +62,7 @@
             <?php foreach ($posts as $post): ?>
             <tr>
                 <td>
-                    <strong><?=$post['title']?></strong>
+                    <?=$post['title']?>
                 </td>
                 <td>
                     <?=$post['post_date_fr']?>
@@ -83,8 +85,8 @@
     </div>
 </section>
 
-<p><a href="index.php?action=disconnect">Déconnexion</a></p>
-<p><a href="index.php">Retour à la home</a></p>
+<p><a href="index.php?action=disconnect" class="btn btn-danger p-1">Déconnexion</a></p>
+<p><a href="index.php" class="btn btn-secondary p-1">Retour à la home</a></p>
 
 <?php elseif ($_SESSION['role'] == '0'):
     header('Location: index.php?action=listPosts');
