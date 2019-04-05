@@ -49,30 +49,29 @@ class PostsController
             exit;
         }
     }
-    public function addPost()
+    public function addPostAdmin()
     {
         
-        require 'view/createPostView.php';
+        require 'view/adminCreatePostView.php';
     }
     public function createPostAdmin()
     {
-        if (!empty($_POST['title']) && !empty($_POST['content']) && $_SESSION['role'] == 1) {
+        if (!empty($_POST['title']) && !empty($_POST['content']) && strlen(trim($_POST['content'])) > 0 && $_SESSION['role'] == 1) {
             $postsManager = new PostsManager();
             $postCreated = $postsManager->createPostAdmin($_POST['title'], $_POST['content']);
-
             header('Location: index.php?action=addPost');
             exit;
         } else {
-            header('Location: index.php');
+            header('Location: index.php?action=addPost');
             exit;
         }
     }
-    public function editPost(){
+    public function editPostAdmin(){
         
         if (isset($_GET['postId']) && ($_GET['postId'] > 0) && $_SESSION['role'] == 1) {
             $postsManager = new PostsManager();
             $post = $postsManager->getPost($_GET['postId']);
-            require 'view/updatePostView.php';
+            require 'view/adminUpdatePostView.php';
 
         } else {
             header('Location: index.php');
@@ -81,13 +80,13 @@ class PostsController
     }
     public function updatePostAdmin(){
         if (isset($_GET['postId']) && ($_GET['postId'] > 0) && $_SESSION['role'] == 1) {
-            if(!empty($_POST['title']) && !empty($_POST['content'])) {   
+            if(!empty($_POST['title']) && !empty($_POST['content']) && strlen(trim($_POST['content'])) ) {   
                 $postsManager = new PostsManager();             
                 $updatedPost = $postsManager->updatePostAdmin($_POST['title'], $_POST['content'], $_GET['postId']);
                 header('Location: index.php?action=editPost&postId=' . $_GET['postId']);
                 exit;
             } else {
-                header('Location: index.php');
+                header('Location: index.php?action=editPost&postId=' . $_GET['postId']);
                 exit;
             }
         } else {
