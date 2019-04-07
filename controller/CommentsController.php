@@ -1,10 +1,18 @@
 <?php
 namespace Blog\controller;
+
 use Blog\model\CommentsManager;
 
 require_once 'model/CommentsManager.php';
 class CommentsController
 {
+    /**
+     * Control if a comment is valid, before posting it >
+     * Session active (member can post a comment) +
+     * Not an empty comment
+     * Not only white spaces
+     * Call addComment() from CommentsManager @param mixed $_GET['postId'], $_SESSION['id'], $_GET['comment']
+     */
     public function postComment()
     {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
@@ -23,6 +31,11 @@ class CommentsController
             exit;
         }
     }
+    /**
+     * List the comments of a post (admin)
+     * Call getListsComments from CommentsManager @param int $_GET['postId']
+     * Display the view with every comments
+     */
     public function listCommentsAdmin()
     {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
@@ -34,6 +47,10 @@ class CommentsController
             exit;
         }
     }
+    /**
+     * Delete a comment (admin)
+     * Call deleteCommentAdmin() from CommentsManager @param int $_GET['commentId']
+     */
     public function deleteCommentAdmin()
     {
         $commentsManager = new CommentsManager();
@@ -41,8 +58,12 @@ class CommentsController
         header('Location: index.php?action=adminPanel');
         exit;
     }
-    public function reportCommentAdmin()
-    {        
+    /**
+     * Report a comment
+     * Call reportComment() from CommentsManager @param int $_POST['reportNb'], $_GET['commentId']
+     */
+    public function reportComment()
+    {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
             if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
                 $commentsManager = new CommentsManager();
@@ -56,6 +77,6 @@ class CommentsController
             header('Location: index.php');
             exit;
         }
-        
+
     }
 }
