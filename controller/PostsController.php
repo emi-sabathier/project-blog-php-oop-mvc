@@ -144,7 +144,7 @@ class PostsController
             $commentsManager = new CommentsManager();
             $deletePost = $postsManager->deletePostAdmin($_GET['postId']);
             $deleteComments = $commentsManager->deleteCommentsAdmin($_GET['postId']);
-            header('Location:index?action=adminPanel');
+            header('Location:index.php?action=adminPanel');
             exit;
         } else {
             header('Location: index.php');
