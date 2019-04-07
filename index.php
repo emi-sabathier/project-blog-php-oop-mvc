@@ -45,6 +45,9 @@ if (isset($_GET['action'])) {
         case 'deleteComment':
             $commentsController->deleteCommentAdmin();
             break;
+        case 'resetReport':
+            $commentsController->resetReportAdmin();
+            break;
         case 'viewPost':
             $postsController->displayPostAdmin();
             break;

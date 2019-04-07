@@ -53,10 +53,15 @@ class CommentsController
      */
     public function deleteCommentAdmin()
     {
-        $commentsManager = new CommentsManager();
-        $deleteComment = $commentsManager->deleteCommentAdmin($_GET['commentId']);
-        header('Location: index.php?action=adminPanel');
-        exit;
+        if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+            $commentsManager = new CommentsManager();
+            $deleteComment = $commentsManager->deleteCommentAdmin($_GET['commentId']);
+            header('Location: index.php?action=adminPanel');
+            exit;
+        } else {
+            header('Location: index.php?action=adminPanel');
+            exit;
+        }
     }
     /**
      * Report a comment
@@ -69,6 +74,7 @@ class CommentsController
                 $commentsManager = new CommentsManager();
                 $reportComment = $commentsManager->reportComment($_POST['reportNb'], $_GET['commentId']);
                 header('Location: index.php?action=displayPost&postId=' . $_GET['postId']);
+                exit;
             } else {
                 header('Location: index.php');
                 exit;
@@ -77,6 +83,21 @@ class CommentsController
             header('Location: index.php');
             exit;
         }
-
+    }
+    /**
+     * Reset the reported comments
+     * Call resetReportAdmin from CommentsManager @param int $_GET['commentId']
+     */
+    public function resetReportAdmin() 
+    {
+        if (isset($_GET['commentId']) && $_GET['commentId'] > 0) {
+            $commentsManager = new CommentsManager();
+            $reportComment = $commentsManager->resetReportAdmin($_GET['commentId']);
+            header('Location: index.php?action=adminPanel');
+            exit;
+        } else {
+            header('Location: index.php?action=adminPanel');
+            exit;
+        }
     }
 }

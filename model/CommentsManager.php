@@ -70,6 +70,14 @@ class CommentsManager extends Manager
         return $reportedComments;
     }
     /**
+     * Reset the reported comments
+     */
+    public function resetReportAdmin($commentId){
+        $db = $this->dbConnect();
+        $q = $db->prepare('UPDATE comments SET report = 0 WHERE id = ?');
+        $q->execute(array($commentId));
+    }
+    /**
      * Delete comments list of a post (admin)
      *
      * @param [int] $postId

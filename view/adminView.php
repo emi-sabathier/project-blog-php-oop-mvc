@@ -37,8 +37,9 @@
                 <td><?=$report['user_name']?></td>
                 <td><?=$report['content']?></td>
                 <td><?=$report['report']?></td>
-                <td>
+                <td class="btn-group" role="group" aria-label="actions">
                     <a href="index.php?action=deleteComment&commentId=<?=$report['id']?>" class="btn btn-danger p-1">Effacer</a>
+                    <a href="index.php?action=resetReport&commentId=<?=$report['id']?>" class="btn btn-secondary p-1">Annuler</a>
                 </td>
             </tr>
         
