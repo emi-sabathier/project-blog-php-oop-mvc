@@ -32,6 +32,7 @@
     <?php endif; ?>
         
 </form>
+<section id="comments">
 
 <?php $i = 0; ?>
 <?php foreach ($postComments as $comment): ?>
@@ -48,6 +49,8 @@
         <?= $comment['content'];?>
     </p>
 <?php endforeach;?>
+
 <p><a href="index.php" class="btn btn-secondary p-1">Retour</a></p>
+</section>
 <?php $content = ob_get_clean();
 require 'template.php';?>

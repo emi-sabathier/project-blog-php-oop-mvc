@@ -19,11 +19,14 @@
   font-weight: normal;
   font-style: normal;
 }
+html{
+  min-height: 100vh;
+}
 body {
   font-family: "source", "Open Sans", sans-serif;
   position: relative;
   z-index: 1;
-  height: 100%;
+  min-height: 100vh;
 }
 body::before{
   content: "";
@@ -39,6 +42,14 @@ body::before{
 }
 h2, h3 {
   font-family:"source black", "Open Sans", sans-serif;
+}
+#msg{
+  position: absolute;
+  top: 50%;
+  padding:1rem;
+  font-weight: bold;
+  text-align: center;
+  left: 40%;
 }
 /********* LOGO ********/
 .alaska {
