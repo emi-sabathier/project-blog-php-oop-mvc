@@ -1,1 +1,1 @@
-# Projet_4
+# Projet 4 (PHP + MVC) du parcours Développeur Web Junior d'OpenClassrooms
