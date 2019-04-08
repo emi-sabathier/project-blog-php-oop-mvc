@@ -58,7 +58,11 @@ class UsersController
         $error = false;
         $msg = "";
         if (isset($_POST['signupLogin'], $_POST['signupUsername'], $_POST['signupPassword'])) {            
-            if (!empty($_POST['signupLogin'] && !empty($_POST['signupPassword']) && !empty($_POST['signupUsername']))) {                
+            if (!empty($_POST['signupLogin']
+            && !empty($_POST['signupPassword'])
+            && !empty($_POST['signupUsername'])
+            && strlen(trim($_POST['signupLogin'])) > 0
+            && strlen(trim($_POST['signupPassword'])) > 0)) {
                 $usersManager = new UsersManager();
                 $userLogin = $usersManager->getUser($_POST['signupLogin']);                
                 if ($_POST['signupLogin'] == $userLogin['user_login']) {
@@ -71,6 +75,9 @@ class UsersController
                     exit;
                 }
             } 
+        } else {
+            $error = true;
+            $msg = 'Pas d\'espace dans les champs';
         }
         require 'view/signupView.php';
     }

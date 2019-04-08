@@ -112,7 +112,7 @@ a {
 /* OPEN - CLOSE BUTTONS */
 
 .menu-btn {
-  position: absolute;
+  position: fixed;
   display: inline;
   top: 0;
   right: 20px;

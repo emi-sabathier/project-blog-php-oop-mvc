@@ -33,9 +33,9 @@
             <?php foreach ($reportedComments as $report): ?>
         
             <tr>
-                <td><?=$report['title']?></td>
+                <td><?= htmlspecialchars($report['title'])?></td>
                 <td><?=$report['user_name']?></td>
-                <td><?=$report['content']?></td>
+                <td><?= htmlspecialchars($report['content'])?></td>
                 <td><?=$report['report']?></td>
                 <td class="btn-group" role="group" aria-label="actions">
                     <a href="index.php?action=deleteComment&commentId=<?=$report['id']?>" class="btn btn-danger p-1">Effacer</a>
@@ -63,7 +63,7 @@
             <?php foreach ($posts as $post): ?>
             <tr>
                 <td>
-                    <?=$post['title']?>
+                    <?= htmlspecialchars($post['title'])?>
                 </td>
                 <td>
                     <?=$post['post_date_fr']?>

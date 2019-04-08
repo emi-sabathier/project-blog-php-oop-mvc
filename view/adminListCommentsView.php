@@ -18,7 +18,7 @@
         <td><strong><?=$comment['title'] ?></strong></td>
         <td><?=$comment['user_name']?></td>
         <td><?=$comment['comment_date_fr']?></td>
-        <td><?=$comment['content']?></td>
+        <td><?=htmlspecialchars($comment['content'])?></td>
         <td><a href="index.php?action=deleteComment&commentId=<?=$comment['id']?>" class="btn btn-danger p-1">Effacer</a></td>
     </tr>
     <?php endforeach;?>

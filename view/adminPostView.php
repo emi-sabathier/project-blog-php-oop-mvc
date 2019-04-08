@@ -7,14 +7,14 @@ ob_start();
 <div>
     <h3>
         <strong>
-            <?= $post['title'] ?></strong>
+            <?= htmlspecialchars($post['title']) ?></strong>
     </h3>
     <p>Par
         <strong>Jean Forteroche</strong> posté le
         <?= $post['post_date_fr'] ?>
     </p>
     <p>
-        <?= $post['content'] ?>
+        <?= htmlspecialchars($post['content']) ?>
     </p>
     <p><a href="index.php?action=adminPanel" class="btn btn-secondary p-1">Retour</a></p>
 </div>

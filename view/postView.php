@@ -1,18 +1,18 @@
-<?php $title = htmlspecialchars($post['title']);?>
+<?php $title = $post['title'];?>
 
 <?php ob_start();?>
 
 <div>
     <h3>
         <strong>
-            <?=$post['title']?></strong>
+            <?= $post['title']?></strong>
     </h3>
     <p>Par
         <strong> Jean Forteroche </strong> posté le
         <?=$post['post_date_fr']?>
     </p>
     <p>
-        <?=$post['content']?>
+        <?= $post['content']?>
     </p>   
 </div>
 
@@ -46,7 +46,7 @@
         <?php endif; ?>
     </p>
     <p>
-        <?= $comment['content'];?>
+        <?= htmlspecialchars($comment['content']);?>
     </p>
 <?php endforeach;?>
 
