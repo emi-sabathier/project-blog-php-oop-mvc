@@ -1,1 +1,7 @@
-# Projet 4 (PHP + MVC) du parcours Développeur Web Junior d'OpenClassrooms
+# Projet 4 du parcours DÃ©veloppeur Web Junior d'OpenClassrooms
+
+## Pas de Framework
+## PHP
+## MVC
+## Bootstrap pour le responsive
+## Ajax sur le signalement
